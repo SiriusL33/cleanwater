@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cleanwater – Wasserhygiene auf höchstem Niveau</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif;
+            background: #ffffff;
+            color: #232e39;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* ==================== HEADER & NAVBAR ==================== */
+        header {
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            background: rgba(13, 60, 96, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 12px rgba(0, 40, 100, 0.1);
+            transition: all 0.3s ease;
+            width: 100%;
+            opacity: 0;
+            transform: translateY(-100%);
+        }
+
+        header.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .navbar-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            width: 20%;
+            height: 20%;
+        }
+
+        .navbar-logo svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .navbar-logo {
+            width: 80px !important;        /* ← GRÖßER & WICHTIG */
+            height: auto !important;       /* Natürliches Verhältnis */
+            min-width: 80px;               /* ← Mindestbreite */
+            border-radius: 0;
+            box-shadow: none;
+        }
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+        }
+
+        .navbar-logo {
+            width: 60px;
+            height: auto;
+            max-height: 45px;
+            border-radius: 0;
+            box-shadow: none;
+            width: 80px;
+            height: auto;
+            min-width: 80px;
+            border-radius: 0;
+        }
+
+        .navbar-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .navbar-links li a {
+            color: #e3f1fc;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .navbar-links li a:hover {
+            color: #8fd0ef;
+        }
+
+        .navbar-links li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #8fd0ef;
+            transition: width 0.3s ease;
+        }
+
+        .navbar-links li a:hover::after {
+            width: 100%;
+        }
+
+        /* ==================== HERO SECTION ==================== */
+        .hero {
+            background: linear-gradient(135deg, #0d3c60 0%, #1a5a7f 100%);
+            padding: 0;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            position: relative;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            padding: 4rem 2rem;
+            width: 100%;
+        }
+
+        .hero-image {
+            flex: 1;
+            min-height: 400px;
+        }
+
+        .hero-image img {
+            width: auto;
+            height: 400px;
+            object-fit: contain;
+            border-radius: 0px;
+            box-shadow: none;
+            filter: brightness(0.95);
+        }
+
+        .hero-text {
+            flex: 1;
+            color: white;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            color: #ffffff;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: #e3f1fc;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background: #8fd0ef;
+            color: #0d3c60;
+            padding: 1rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid #8fd0ef;
+        }
+
+        .hero-cta:hover {
+            background: transparent;
+            color: #8fd0ef;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(143, 208, 239, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .hero-container {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .hero-text p {
+                font-size: 1rem;
+            }
+
+            .navbar-links {
+                gap: 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* ==================== DOWNLOADS SECTION ==================== */
+        .downloads {
+            max-width: 100%;
+            margin: 0;
+            padding: 3rem 2rem;
+            background: white;
+            border-radius: 0;
+            box-shadow: none;
+            border-top: none;
+        }
+
+        .downloads h2 {
+            color: #0d3c60;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .downloads > p {
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .downloads-container {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            background: #8fd0ef;
+            color: #0d3c60;
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border: 2px solid #8fd0ef;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .download-btn:hover {
+            background: transparent;
+            color: #8fd0ef;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(143, 208, 239, 0.25);
+        }
+
+        .download-btn i {
+            font-size: 1.1rem;
+        }
+
+        .download-info {
+            font-size: 0.85rem;
+            color: #999;
+            margin-left: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .downloads-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .download-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* ==================== GALLERY SECTION ==================== */
+        .gallery {
+            max-width: 100%;
+            margin: 0;
+            padding: 3rem 2rem;
+            background: white;
+            border-radius: 0;
+            box-shadow: none;
+            border-top: none;
+        }
+
+        .gallery h2 {
+            color: #0d3c60;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .gallery-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 40, 100, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            aspect-ratio: 16 / 10;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 40, 100, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(11, 75, 97, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay i {
+            font-size: 2.5rem;
+            color: #8fd0ef;
+        }
+
+        /* ==================== LIGHTBOX ==================== */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 8px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #8fd0ef;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            transform: rotate(90deg) scale(1.2);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #8fd0ef;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 1rem;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
+        }
+
+        .lightbox-nav:hover {
+            transform: translateY(-50%) scale(1.3);
+        }
+
+        /* ==================== CONTENT SECTIONS ==================== */
+        section {
+            max-width: 100%;
+            margin: 0;
+            padding: 3rem 2rem;
+            background: white;
+            border-radius: 0;
+            box-shadow: none;
+            border-top: none;
+        }
+
+        section#kontakt {
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+
+        section h2 {
+            color: #0d3c60;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            border-bottom: 3px solid #8fd0ef;
+            padding-bottom: 1rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ==================== CONTACT BLOCK ==================== */
+        .contact-block {
+            background: linear-gradient(135deg, #8fd0ef 0%, #7fbce5 100%);
+            color: #0d3c60;
+            padding: 2rem;
+            border-radius: 0;
+            margin-top: 2rem;
+            margin-left: -2rem;
+            margin-right: -2rem;
+            margin-bottom: 0;
+            padding-bottom: 3rem;
+        }
+
+        .contact-block p {
+            color: #0d3c60;
+            font-size: 1.1rem;
+        }
+
+        .contact-block a {
+            color: #0d3c60;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .contact-block a:hover {
+            text-decoration: underline;
+        }
+
+        /* ==================== FOOTER ==================== */
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background: #0d3c60;
+            color: #b7c7d8;
+            margin-top: 0;
+            font-size: 0.95rem;
+        }
+
+        footer a {
+            color: #8fd0ef;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem;
+            }
+
+            .navbar-links {
+                gap: 1rem;
+            }
+
+            section {
+                margin: 1.5rem;
+                padding: 1.5rem;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="navbar-left">
+                <img src="../cleanwater/assets/img/Logo.svg" alt="Cleanwater Logo" class="navbar-logo">
+                <span class="navbar-brand"></span>
+            </div>
+            <ul class="navbar-links">
+                <li><a href="#downloads">Downloads</a></li>
+                <li><a href="#system">Das System</a></li>
+                <li><a href="#vorteile">Vorteile</a></li>
+                <li><a href="#gallery">Galerie</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <div class="hero-container">
+                <div class="hero-image">
+                    <img src="../cleanwater/assets/img/Gerät.jpg" alt="Cleanwater+ Gerät mit DWT-Technologie">
+                </div>
+                <div class="hero-text">
+                    <h1>Wasserhygiene auf höchstem Niveau</h1>
+                    <p>Chemiefreie Entkeimung für dentale Wassersysteme durch anodische Oxidation.</p>
+                    <a href="#system" class="hero-cta">
+                        <i class="fas fa-arrow-down"></i> Mehr erfahren
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- DOWNLOADS SECTION -->
+        <section id="downloads" class="downloads">
+            <h2>Downloads</h2>
+            <p>Hier können Sie Informationsmaterial und Dokumente herunterladen. Die Dateien sind jeweils mit Typ und Größe gekennzeichnet.</p>
+            <div class="downloads-container">
+                <a href="cleanwater-infobroschuere.pdf" target="_blank" class="download-btn">
+                    <i class="fas fa-file-pdf"></i> Infobroschüre <span class="download-info">(1.8MB)</span>
+                </a>
+                <a href="installationsanleitung.pdf" target="_blank" class="download-btn">
+                    <i class="fas fa-file-pdf"></i> Installationsanleitung <span class="download-info">(2.2MB)</span>
+                </a>
+                <a href="zertifikat.png" target="_blank" class="download-btn">
+                    <i class="fas fa-file-image"></i> Zertifikat <span class="download-info">(150KB)</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- GALLERY SECTION -->
+        <section id="gallery" class="gallery">
+            <h2>Galerie</h2>
+            <div class="gallery-row">
+                <div class="gallery-item" onclick="openLightbox(0)">
+                    <img src="../cleanwater/assets/img/Platzhalter.png" alt="Saugschlauchanschluss">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(1)">
+                    <img src="../cleanwater/assets/img/Platzhalter.png" alt="Anschlussstück Vorlauf">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(2)">
+                    <img src="../cleanwater/assets/img/Platzhalter.png" alt="Filtereingang, Reaktoreingang">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LIGHTBOX -->
+        <div class="lightbox" id="lightbox">
+            <div class="lightbox-content">
+                <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+                <img src="" alt="" class="lightbox-image" id="lightboxImage">
+                <span class="lightbox-nav lightbox-prev" onclick="prevImage()">&lt;</span>
+                <span class="lightbox-nav lightbox-next" onclick="nextImage()">&gt;</span>
+            </div>
+        </div>
+
+        <!-- SYSTEM SECTION -->
+        <section id="system">
+            <h2>Das Cleanwater-System</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe autem vitae repellat delectus doloremque quibusdam dignissimos natus ab voluptate aliquid similique impedit repudiandae recusandae, molestias, harum molestiae ea ipsam nemo libero exercitationem laborum.</p>
+            <p>Tempore vel ut commodi nesciunt labore? Nobis inventore ex distinctio fuga voluptatum, eveniet magnam quidem molestiae nostrum aspernatur officiis, ratione sapiente odit eaque libero maiores facilis.</p>
+        </section>
+
+        <!-- VORTEILE SECTION -->
+        <section id="vorteile">
+            <h2>Vorteile</h2>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa deserunt voluptates neque. Est temporibus perspiciatis assumenda earum odit illo, officiis, modi dignissimos necessitatibus reprehenderit impedit facilis laboriosam sunt voluptas ad exercitationem explicabo quasi praesentium fugit neque id eaque!</p>
+            <p>Inventore ducimus nemo voluptas, officia eius labore iure! Porro itaque aut harum ea. Laboriosam rerum mollitia aliquam laborum autem itaque dolorem repellat ipsam repudiandae voluptas similique voluptatum maiores amet iure architecto nesciunt alias rem.</p>
+        </section>
+
+        <!-- KONTAKT SECTION -->
+        <section id="kontakt">
+            <h2>Kontakt</h2>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt voluptatibus repellat earum fuga a, eos iusto sed, reiciendis at mollitia ea dicta quisquam explicabo excepturi labore nostrum optio distinctio, ex obcaecati velit dolore.</p>
+            <div class="contact-block">
+                <p>Bei Fragen: <a href="mailto:info@cleanwater.de">info@cleanwater.de</a> oder <strong>06000/123456</strong></p>
+                <p><a href="#downloads">→ Zu den Downloads</a></p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Cleanwater | <a href="#impressum">Impressum</a></p>
+    </footer>
+
+    <script>
+        const galleryImages = [
+            'https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/b9272b1e-2318-4501-9ec0-475224e6b43b',
+            'https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/2b74c82c-32e0-47a4-a7ea-4410d0836fef',
+            'https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/e39cfa5b-2c43-4bf5-91b8-db3c38c20fd7'
+        ];
+        let currentImageIndex = 0;
+
+        function openLightbox(index) {
+            currentImageIndex = index;
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightboxImage');
+            lightboxImage.src = galleryImages[index];
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function prevImage() {
+            currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+            document.getElementById('lightboxImage').src = galleryImages[currentImageIndex];
+        }
+
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+            document.getElementById('lightboxImage').src = galleryImages[currentImageIndex];
+        }
+
+        // Keyboard navigation for lightbox
+        document.addEventListener('keydown', (e) => {
+            if (document.getElementById('lightbox').classList.contains('active')) {
+                if (e.key === 'ArrowLeft') prevImage();
+                if (e.key === 'ArrowRight') nextImage();
+                if (e.key === 'Escape') closeLightbox();
+            }
+        });
+
+        // Dynamic navbar visibility on scroll
+        const header = document.querySelector('header');
+        let lastScrollTop = 0;
+
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 300) {
+                header.classList.add('visible');
+            } else {
+                header.classList.remove('visible');
+            }
+            
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
