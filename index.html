@@ -12,7 +12,8 @@
     <header>
         <nav class="navbar">
             <div class="navbar-left">
-                <img src="assets/img/Logo.svg" alt="Cleanwater Logo" class="navbar-logo">
+                <!-- Sirius Change: Bildpfad auf ../assets/img gesetzt, damit XAMPP/WSL-Ordnerstruktur mit gemeinsamer assets-Ebene korrekt aufgelöst wird. -->
+                <img src="../assets/img/Logo.svg" alt="Cleanwater Logo" class="navbar-logo">
                 <span class="navbar-brand"></span>
             </div>
             <ul class="navbar-links">
@@ -30,7 +31,8 @@
         <section class="hero">
             <div class="hero-container">
                 <div class="hero-image">
-                    <img src="assets/img/Gerät.jpg" alt="Cleanwater+ Gerät mit DWT-Technologie">
+                    <!-- Sirius Change: Hero-Bildpfad auf ../assets/img vereinheitlicht für lokale XAMPP-Ausführung. -->
+                    <img src="../assets/img/Gerät.jpg" alt="Cleanwater+ Gerät mit DWT-Technologie">
                 </div>
                 <div class="hero-text">
                     <h1>Wasserhygiene auf höchstem Niveau</h1>
@@ -61,22 +63,23 @@
 
         <!-- GALLERY SECTION -->
         <section id="gallery" class="gallery">
+            <!-- Sirius Change: Galerie-Bildpfade auf ../assets/img angepasst, damit Platzhalter in der gewünschten Verzeichnisstruktur laden. -->
             <h2>Galerie</h2>
             <div class="gallery-row">
                 <div class="gallery-item" onclick="openLightbox(0)">
-                    <img src="assets/img/Platzhalter.png" alt="Saugschlauchanschluss">
+                    <img src="../assets/img/Platzhalter.png" alt="Saugschlauchanschluss">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
                 <div class="gallery-item" onclick="openLightbox(1)">
-                    <img src="assets/img/Platzhalter.png" alt="Anschlussstück Vorlauf">
+                    <img src="../assets/img/Platzhalter.png" alt="Anschlussstück Vorlauf">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </div>
                 <div class="gallery-item" onclick="openLightbox(2)">
-                    <img src="assets/img/Platzhalter.png" alt="Filtereingang, Reaktoreingang">
+                    <img src="../assets/img/Platzhalter.png" alt="Filtereingang, Reaktoreingang">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
