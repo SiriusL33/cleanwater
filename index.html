@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cleanwater – Wasserhygiene auf höchstem Niveau</title>
+    <meta name="description" content="Cleanwater bietet chemiefreie Wasserhygiene für dentale Wassersysteme mittels anodischer Oxidation.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Sirius Change: Externes Stylesheet für saubere Trennung von Struktur und Design. -->
     <link rel="stylesheet" href="assets/css/styles.css">
@@ -13,7 +14,7 @@
         <nav class="navbar">
             <div class="navbar-left">
                 <!-- Sirius Change: Bildpfad auf relatives assets/img vereinheitlicht, damit Root- und Subpfad-Deployments konsistent funktionieren. -->
-                <img src="assets/img/Logo.svg" alt="Cleanwater Logo" class="navbar-logo">
+                <img src="assets/img/Logo.svg" alt="Cleanwater Firmenlogo" class="navbar-logo" loading="eager" decoding="async">
                 <span class="navbar-brand"></span>
             </div>
             <ul class="navbar-links">
@@ -32,7 +33,7 @@
             <div class="hero-container">
                 <div class="hero-image">
                     <!-- Sirius Change: Hero-Bildpfad auf relatives assets/img harmonisiert (Deployment-unabhängig). -->
-                    <img src="assets/img/Cleanwater Gerät.jpg" alt="Cleanwater+ Gerät mit DWT-Technologie">
+                    <img src="assets/img/Cleanwater Gerät.jpg" alt="Cleanwater+ Gerät für chemiefreie Wasserentkeimung in Dentalanlagen" loading="eager" fetchpriority="high" decoding="async">
                 </div>
                 <div class="hero-text">
                     <h1 id="hero-title">Wasserhygiene auf höchstem Niveau</h1>
@@ -49,13 +50,13 @@
             <h2>Downloads</h2>
             <p>Hier können Sie Informationsmaterial und Dokumente herunterladen. Die Dateien sind jeweils mit Typ und Größe gekennzeichnet.</p>
             <div class="downloads-container">
-                <a href="cleanwater-infobroschuere.pdf" target="_blank" class="download-btn">
+                <a href="cleanwater-infobroschuere.pdf" target="_blank" rel="noopener noreferrer" class="download-btn">
                     <i class="fas fa-file-pdf"></i> Infobroschüre <span class="download-info">(1.8MB)</span>
                 </a>
-                <a href="installationsanleitung.pdf" target="_blank" class="download-btn">
+                <a href="installationsanleitung.pdf" target="_blank" rel="noopener noreferrer" class="download-btn">
                     <i class="fas fa-file-pdf"></i> Installationsanleitung <span class="download-info">(2.2MB)</span>
                 </a>
-                <a href="zertifikat.png" target="_blank" class="download-btn">
+                <a href="zertifikat.png" target="_blank" rel="noopener noreferrer" class="download-btn">
                     <i class="fas fa-file-image"></i> Zertifikat <span class="download-info">(150KB)</span>
                 </a>
             </div>
@@ -67,19 +68,19 @@
             <h2>Galerie</h2>
             <div class="gallery-row">
                 <button type="button" class="gallery-item" data-gallery-index="0" aria-label="Bild 1 in der Galerie öffnen">
-                    <img src="assets/img/Platzhalter.png" alt="Saugschlauchanschluss">
+                    <img src="assets/img/Platzhalter.png" alt="Detailansicht des Saugschlauchanschlusses" loading="lazy" decoding="async">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </button>
                 <button type="button" class="gallery-item" data-gallery-index="1" aria-label="Bild 2 in der Galerie öffnen">
-                    <img src="assets/img/Platzhalter.png" alt="Anschlussstück Vorlauf">
+                    <img src="assets/img/Platzhalter.png" alt="Vorlauf-Anschlussstück des Cleanwater-Systems" loading="lazy" decoding="async">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
                 </button>
                 <button type="button" class="gallery-item" data-gallery-index="2" aria-label="Bild 3 in der Galerie öffnen">
-                    <img src="assets/img/Platzhalter.png" alt="Filtereingang, Reaktoreingang">
+                    <img src="assets/img/Platzhalter.png" alt="Filter- und Reaktoreingang des Cleanwater-Systems" loading="lazy" decoding="async">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
@@ -88,10 +89,10 @@
         </section>
 
         <!-- Sirius Change: Lightbox semantisch als Dialog ausgezeichnet, Struktur bleibt funktional unverändert. -->
-        <aside class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Galerieansicht">
+        <aside class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Galerieansicht" aria-hidden="true">
             <div class="lightbox-content">
                 <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Galerie schließen">&times;</button>
-                <img src="" alt="" class="lightbox-image" id="lightboxImage">
+                <img src="" alt="" class="lightbox-image" id="lightboxImage" loading="eager" decoding="async">
                 <button type="button" class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Vorheriges Bild">&lt;</button>
                 <button type="button" class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Nächstes Bild">&gt;</button>
             </div>
@@ -126,6 +127,6 @@
         <p>&copy; 2026 Cleanwater | <a href="#impressum">Impressum</a></p>
     </footer>
     <!-- Sirius Change: Externe JavaScript-Datei für bessere Wartbarkeit und Debugging. -->
-    <script src="assets/js/main.js" defer></script>
+    <script type="module" src="assets/js/main.js"></script>
 </body>
 </html>
