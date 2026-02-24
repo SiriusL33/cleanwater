@@ -14,6 +14,15 @@
 ### 2026-02-24 – Sirius (WSL Setup)
 - Sirius Change: Dokumentation um einen klaren WSL-Terminal-Ablauf ergänzt, damit das Projekt reproduzierbar eingerichtet und lokal gestartet werden kann.
 
+
+## Pfadkonventionen (Deployment-abhängig)
+
+<!-- Sirius Change: Verbindliche Pfadregeln ergänzt, um zwischen Root-Deployment und verschachtelten Unterseiten konsistent zu bleiben. -->
+- `assets/...` verwenden, wenn die referenzierende Datei im Projekt-Root liegt (z. B. `index.html`) und `assets/` ein Unterordner desselben Roots ist.
+- `../assets/...` verwenden, wenn die referenzierende Datei in einem Unterordner liegt (z. B. `pages/impressum.html`) und `assets/` weiterhin eine Ebene darüber im Projekt-Root liegt.
+- Für geplante Auslieferung unter einem festen Subpfad (z. B. `/cleanwater/`) relative Pfade bevorzugen (`assets/...`, `../assets/...`), damit Dev-Server, statisches Hosting und XAMPP-Setups gleich funktionieren.
+- Root-absolute Pfade (`/assets/...`) nur nutzen, wenn Deployments garantiert vom Domain-Root ausgeliefert werden und kein Unterpfad-Betrieb vorgesehen ist.
+
 ## Goldstandard-Migrationsplan
 
 1. **Debug-Baseline setzen**

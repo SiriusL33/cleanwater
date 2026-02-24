@@ -56,30 +56,21 @@
             height: 100%;
         }
 
+        /* Sirius Change: Doppelte .navbar-logo-Deklarationen zusammengeführt, ohne visuelle Werte zu verändern. */
         .navbar-logo {
-            width: 80px !important;        /* ← GRÖßER & WICHTIG */
-            height: auto !important;       /* Natürliches Verhältnis */
-            min-width: 80px;               /* ← Mindestbreite */
+            width: 80px !important;
+            height: auto !important;
+            min-width: 80px;
+            max-height: 45px;
             border-radius: 0;
             box-shadow: none;
         }
+
         .navbar-brand {
             font-size: 1.8rem;
             font-weight: 700;
             letter-spacing: 0.5px;
             color: #ffffff;
-        }
-
-        .navbar-logo {
-            width: 60px;
-            height: auto;
-            max-height: 45px;
-            border-radius: 0;
-            box-shadow: none;
-            width: 80px;
-            height: auto;
-            min-width: 80px;
-            border-radius: 0;
         }
 
         .navbar-links {
@@ -334,6 +325,9 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
             aspect-ratio: 16 / 10;
+            border: 0;
+            background: transparent;
+            padding: 0;
         }
 
         .gallery-item:hover {
@@ -413,6 +407,8 @@
             font-size: 2rem;
             cursor: pointer;
             transition: all 0.3s ease;
+            border: 0;
+            background: transparent;
         }
 
         .lightbox-close:hover {
@@ -429,6 +425,8 @@
             padding: 1rem;
             transition: all 0.3s ease;
             user-select: none;
+            border: 0;
+            background: transparent;
         }
 
         .lightbox-prev {

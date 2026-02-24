@@ -12,8 +12,8 @@
     <header>
         <nav class="navbar">
             <div class="navbar-left">
-                <!-- Sirius Change: Bildpfad auf /assets/img gesetzt, damit Vite-Dev-Server und statische Auslieferung konsistent funktionieren. -->
-                <img src="/assets/img/Logo.svg" alt="Cleanwater Logo" class="navbar-logo">
+                <!-- Sirius Change: Bildpfad auf relatives assets/img vereinheitlicht, damit Root- und Subpfad-Deployments konsistent funktionieren. -->
+                <img src="assets/img/Logo.svg" alt="Cleanwater Logo" class="navbar-logo">
                 <span class="navbar-brand"></span>
             </div>
             <ul class="navbar-links">
@@ -28,14 +28,14 @@
 
     <main>
         <!-- HERO SECTION -->
-        <section class="hero">
+        <section class="hero" aria-labelledby="hero-title">
             <div class="hero-container">
                 <div class="hero-image">
-                    <!-- Sirius Change: Hero-Bildpfad auf /assets/img und realen Dateinamen angepasst. -->
-                    <img src="/assets/img/Cleanwater Gerät.jpg" alt="Cleanwater+ Gerät mit DWT-Technologie">
+                    <!-- Sirius Change: Hero-Bildpfad auf relatives assets/img harmonisiert (Deployment-unabhängig). -->
+                    <img src="assets/img/Cleanwater Gerät.jpg" alt="Cleanwater+ Gerät mit DWT-Technologie">
                 </div>
                 <div class="hero-text">
-                    <h1>Wasserhygiene auf höchstem Niveau</h1>
+                    <h1 id="hero-title">Wasserhygiene auf höchstem Niveau</h1>
                     <p>Chemiefreie Entkeimung für dentale Wassersysteme durch anodische Oxidation.</p>
                     <a href="#system" class="hero-cta">
                         <i class="fas fa-arrow-down"></i> Mehr erfahren
@@ -63,39 +63,39 @@
 
         <!-- GALLERY SECTION -->
         <section id="gallery" class="gallery">
-            <!-- Sirius Change: Galerie-Bildpfade auf /assets/img angepasst. -->
+            <!-- Sirius Change: Galerie-Bildpfade auf relatives assets/img harmonisiert (Deployment-unabhängig). -->
             <h2>Galerie</h2>
             <div class="gallery-row">
-                <div class="gallery-item" onclick="openLightbox(0)">
-                    <img src="/assets/img/Platzhalter.png" alt="Saugschlauchanschluss">
+                <button type="button" class="gallery-item" data-gallery-index="0" aria-label="Bild 1 in der Galerie öffnen">
+                    <img src="assets/img/Platzhalter.png" alt="Saugschlauchanschluss">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
-                </div>
-                <div class="gallery-item" onclick="openLightbox(1)">
-                    <img src="/assets/img/Platzhalter.png" alt="Anschlussstück Vorlauf">
+                </button>
+                <button type="button" class="gallery-item" data-gallery-index="1" aria-label="Bild 2 in der Galerie öffnen">
+                    <img src="assets/img/Platzhalter.png" alt="Anschlussstück Vorlauf">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
-                </div>
-                <div class="gallery-item" onclick="openLightbox(2)">
-                    <img src="/assets/img/Platzhalter.png" alt="Filtereingang, Reaktoreingang">
+                </button>
+                <button type="button" class="gallery-item" data-gallery-index="2" aria-label="Bild 3 in der Galerie öffnen">
+                    <img src="assets/img/Platzhalter.png" alt="Filtereingang, Reaktoreingang">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus"></i>
                     </div>
-                </div>
+                </button>
             </div>
         </section>
 
-        <!-- LIGHTBOX -->
-        <div class="lightbox" id="lightbox">
+        <!-- Sirius Change: Lightbox semantisch als Dialog ausgezeichnet, Struktur bleibt funktional unverändert. -->
+        <aside class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Galerieansicht">
             <div class="lightbox-content">
-                <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+                <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Galerie schließen">&times;</button>
                 <img src="" alt="" class="lightbox-image" id="lightboxImage">
-                <span class="lightbox-nav lightbox-prev" onclick="prevImage()">&lt;</span>
-                <span class="lightbox-nav lightbox-next" onclick="nextImage()">&gt;</span>
+                <button type="button" class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Vorheriges Bild">&lt;</button>
+                <button type="button" class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Nächstes Bild">&gt;</button>
             </div>
-        </div>
+        </aside>
 
         <!-- SYSTEM SECTION -->
         <section id="system">
