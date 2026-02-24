@@ -1,0 +1,19 @@
+{
+  "name": "cleanwater",
+  "version": "1.0.0",
+  "description": "## ChangeLog",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SiriusL33/cleanwater.git"
+  },
+  "author": "Sirius",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SiriusL33/cleanwater/issues"
+  },
+  "homepage": "https://github.com/SiriusL33/cleanwater#readme"
+}
