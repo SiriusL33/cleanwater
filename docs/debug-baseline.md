@@ -10,13 +10,13 @@ Systematische Erstaufnahme für:
 
 ## Reproduzierbare Schritte
 
-### 1) Lokalen Webserver starten
+### 1) Entwicklungsserver starten (Vite)
 ```bash
-python3 -m http.server 4173
+npm run dev -- --host 0.0.0.0 --port 4173
 ```
 
 ### 2) Seite im Browser öffnen
-- URL: `http://127.0.0.1:4173/index.html`
+- URL: `http://127.0.0.1:4173/`
 
 ### 3) Console-Fehler erfassen (DevTools)
 1. DevTools öffnen (`F12`)
@@ -37,7 +37,7 @@ python3 -m http.server 4173
 
 ---
 
-## Baseline-Metriken
+## Messung A – Vor dem Fix
 
 | Metrik | Wert |
 |---|---:|
@@ -46,33 +46,42 @@ python3 -m http.server 4173
 | Defekte Dokument-Links | 3 |
 | Defekte Hash-Anker | 1 |
 
-## Gefundene Fehler (inkl. Priorisierung)
-
 ### A) Umgebungsfehler (lokal fehlende Dateien)
 1. `cleanwater-infobroschuere.pdf` → 404
 2. `installationsanleitung.pdf` → 404
 3. `zertifikat.png` → 404
 
-**Einschätzung:** Diese drei Dateien sind im Projekt-Root nicht vorhanden und blockieren Download-Buttons lokal.
-
 ### B) Codefehler (HTML/Asset-Referenzen)
 1. Hero-Bild lädt nicht: `../assets/img/Gerät.jpg` → 404
    - im Repository vorhanden ist stattdessen: `assets/img/Cleanwater Gerät.jpg`
-   - Ursache: Dateiname/Pfad in HTML stimmt nicht mit realer Datei überein.
 2. Footer-Link `#impressum` ist defekt
    - `href="#impressum"` vorhanden, aber kein Element mit `id="impressum"` im Dokument.
 
 ---
 
-## Start-Prioritäten (Fix-Reihenfolge)
-1. **Codefehler zuerst** (schnell behebbar, direkt sichtbar):
-   - Hero-Bildpfad korrigieren
-   - fehlende `#impressum`-Sektion ergänzen oder Link entfernen/anpassen
-2. **Umgebungsfehler danach**:
-   - fehlende Download-Dateien bereitstellen oder Links temporär deaktivieren
+## Messung B – Nach Bild-/Logo-Fix
 
-## Erfolgskriterien für nächsten Lauf
-- Console Errors: **0**
-- HTTP 404 (Initial Load): **0**
-- Defekte Dokument-Links: **0** (oder bewusst deaktiviert)
-- Defekte Hash-Anker: **0**
+### Ergebnis via Vite (`npm run dev`)
+| Metrik | Wert |
+|---|---:|
+| Console Errors | 0 |
+| HTTP 404 Requests (Initial Load) | 0 |
+| Defekte Hash-Anker | 1 (`#impressum`) |
+
+### Ergebnis via statischem Server (`python3 -m http.server`)
+| Metrik | Wert |
+|---|---:|
+| Fehlende Download-Dateien (404) | 3 |
+
+> Hinweis: Vite liefert unbekannte Routen im Dev-Modus häufig mit `200` zurück (SPA-Fallback). Für echte Dateiverfügbarkeit der Download-Assets daher zusätzlich mit statischem Server gegenprüfen.
+
+## Ergebnis
+- **Gelöst:** Logo sichtbar, Hero-Bild lädt korrekt, Galerie-Bilder laden korrekt.
+- **Offen (Code):** Hash-Anker `#impressum` zeigt weiterhin auf kein vorhandenes Element.
+- **Offen (Umgebung):** Download-Dateien fehlen weiterhin physisch im Projekt.
+
+## Start-Prioritäten (nächster Schritt)
+1. **Codefehler offen:**
+   - `#impressum` reparieren (Sektion ergänzen oder Link anpassen/entfernen)
+2. **Umgebungsfehler offen:**
+   - Download-Dateien bereitstellen, falls echte Downloads gewünscht sind.
