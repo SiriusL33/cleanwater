@@ -85,3 +85,31 @@ npm run dev -- --host 0.0.0.0 --port 4173
    - `#impressum` reparieren (Sektion ergänzen oder Link anpassen/entfernen)
 2. **Umgebungsfehler offen:**
    - Download-Dateien bereitstellen, falls echte Downloads gewünscht sind.
+
+## Messung C – Quality Gate (Schritt 4)
+
+Ausführung:
+```bash
+npm run check
+```
+
+| Metrik | Baseline (Messung A) | Nach Quality Gate (Messung C) |
+|---|---:|---:|
+| Console Errors | 1 | 0 |
+| HTTP 404 Requests (Initial Load) | 1 | 0 |
+| Defekte Dokument-Links | 3 | 0 |
+| Defekte Hash-Anker | 1 | 0 |
+
+Ergebnisvergleich: **Alle Fehlerzahlen wurden gegenüber der Baseline reduziert und sind jetzt bei 0.**
+
+## Offene Restpunkte (priorisiert)
+
+### Blocker
+- Keine technischen Blocker offen (Quality Gate grün).
+
+### High
+- Echte Browser-E2E-Ausführung (inkl. Network-Panel/Console-Monitoring) in CI ergänzen, damit das aktuelle Node-Regressionsskript langfristig durch UI-nahe Tests abgesichert wird.
+
+### Normal
+- Rechtstext-Sektionen `Impressum`/`Datenschutz` inhaltlich vollständig ausformulieren (derzeit nur Platzhaltertext für funktionierende Anker-Navigation).
+- Download-Button-Texte auf exakte Dateinamen und Versionierung (Dokumentstand) harmonisieren.

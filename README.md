@@ -23,6 +23,17 @@
 - Für geplante Auslieferung unter einem festen Subpfad (z. B. `/cleanwater/`) relative Pfade bevorzugen (`assets/...`, `../assets/...`), damit Dev-Server, statisches Hosting und XAMPP-Setups gleich funktionieren.
 - Root-absolute Pfade (`/assets/...`) nur nutzen, wenn Deployments garantiert vom Domain-Root ausgeliefert werden und kein Unterpfad-Betrieb vorgesehen ist.
 
+
+## Quality Gate (Merge-Pflicht)
+
+Vor jedem Merge muss der folgende Gate-Check erfolgreich sein:
+
+```bash
+npm run check
+```
+
+Der Merge ist nur zulässig, wenn der Check ohne Fehler durchläuft (Exit-Code 0).
+
 ## Goldstandard-Migrationsplan
 
 1. **Debug-Baseline setzen**

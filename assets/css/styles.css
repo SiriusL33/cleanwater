@@ -381,3 +381,13 @@ footer a:focus-visible {
     }
     .lightbox-prev { left: calc(50% - 55px); }
     .lightbox-next { right: calc(50% - 55px); }}
+
+/* Sirius Change: Rechtstexte als ankernavigierbare Sektionen ergänzt. */
+.legal {
+    padding: 48px 7%;
+    background: #f8fafc;
+}
+
+.legal h2 {
+    margin-bottom: 12px;
+}
