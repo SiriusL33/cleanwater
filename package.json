@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "## ChangeLog",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+ "scripts": {
+  "dev": "vite",
+  "build": "vite build",
+  "preview": "vite preview"
+},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SiriusL33/cleanwater.git"
@@ -15,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/SiriusL33/cleanwater/issues"
   },
-  "homepage": "https://github.com/SiriusL33/cleanwater#readme"
+  "homepage": "https://github.com/SiriusL33/cleanwater#readme",
+  "devDependencies": {
+    "vite": "^7.3.1"
+  }
 }
