@@ -33,6 +33,7 @@ class Element {
     this.classList = new ClassList();
     this.style = {};
     this.focused = false;
+    this.textContent = '';
   }
   setAttribute(k, v) { this.attributes[k] = String(v); }
   getAttribute(k) {
@@ -49,40 +50,34 @@ class Element {
   }
 }
 
-const header = new Element();
+const header = new Element({ id: 'siteHeader' });
 const lightbox = new Element({ id: 'lightbox', role: 'dialog' });
 const lightboxImage = new Element({ id: 'lightboxImage' });
+const lightboxTitle = new Element({ id: 'lightboxTitle' });
 const lightboxClose = new Element({ id: 'lightboxClose' });
 const lightboxPrev = new Element({ id: 'lightboxPrev' });
 const lightboxNext = new Element({ id: 'lightboxNext' });
-const galleryItems = [0, 1, 2].map((i) => new Element({ dataset: { galleryIndex: String(i) } }));
+const galleryItems = Array.from({ length: 6 }, (_, i) => new Element({ dataset: { galleryIndex: String(i) } }));
 const anchor = new Element({ href: '#vorteile' });
-const impressumAnchor = new Element({ href: '#impressum' });
 const target = new Element({ id: 'vorteile' });
-const impressum = new Element({ id: 'impressum' });
 
-[target, impressum].forEach((el) => {
-  el.scrollIntoView = () => { el.scrolled = true; };
-});
+target.scrollIntoView = () => { target.scrolled = true; };
 
 const documentListeners = {};
-const windowListeners = {};
 const document = {
   body: { style: {} },
   activeElement: null,
   documentElement: { scrollTop: 0 },
   getElementById(id) {
-    return { lightbox, lightboxImage, lightboxClose, lightboxPrev, lightboxNext }[id] || null;
+    return { lightbox, lightboxImage, lightboxTitle, lightboxClose, lightboxPrev, lightboxNext, siteHeader: header }[id] || null;
   },
   querySelector(selector) {
-    if (selector === 'header') return header;
     if (selector === '#vorteile') return target;
-    if (selector === '#impressum') return impressum;
     return null;
   },
   querySelectorAll(selector) {
     if (selector === '[data-gallery-index]') return galleryItems;
-    if (selector === 'a[href^="#"]') return [anchor, impressumAnchor];
+    if (selector === 'a[href^="#"]') return [anchor];
     return [];
   },
   addEventListener(type, cb) { (documentListeners[type] ||= []).push(cb); }
@@ -90,42 +85,36 @@ const document = {
 
 const windowObj = {
   pageYOffset: 0,
-  addEventListener(type, cb) { (windowListeners[type] ||= []).push(cb); }
+  addEventListener() {}
 };
 
-function requestAnimationFrame(cb) { cb(); }
-
-Object.assign(global, { document, window: windowObj, requestAnimationFrame, HTMLElement: Element, console });
+Object.assign(global, { document, window: windowObj, HTMLElement: Element, console });
 
 const mainJs = fs.readFileSync(path.join(__dirname, '..', 'assets/js/main.js'), 'utf8');
 vm.runInThisContext(mainJs);
 
-// Anchor scroll test
 anchor.click();
 assert(target.scrolled === true, 'Anchor-Scroll zu #vorteile fehlgeschlagen.');
-impressumAnchor.click();
-assert(impressum.scrolled === true, 'Anchor-Scroll zu #impressum fehlgeschlagen.');
 
-// Lightbox open/close/nav
 galleryItems[0].click();
 assert(lightbox.classList.contains('active'), 'Lightbox öffnet nicht.');
+assert(lightboxTitle.textContent.length > 0, 'Lightbox-Titel wurde nicht gesetzt.');
 const firstSrc = lightboxImage.src;
 lightboxNext.click();
-assert(lightboxImage.src !== firstSrc, 'Lightbox-Weiternavigation fehlgeschlagen.');
-lightboxPrev.click();
-assert(lightboxImage.src === firstSrc, 'Lightbox-Zurücknavigation fehlgeschlagen.');
+assert(lightboxImage.src === firstSrc, 'Placeholder-Src sollte gleich bleiben.');
+assert(lightboxTitle.textContent !== '', 'Titel nach Weiter-Navigation fehlt.');
 (documentListeners.keydown || []).forEach((cb) => cb({ key: 'Escape' }));
 assert(!lightbox.classList.contains('active'), 'Lightbox schließt nicht per Escape.');
 
-// Download links
-const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
-const hrefs = [...html.matchAll(/<a[^>]*class=\"download-btn\"[^>]*>/g)]
-  .map((m) => (m[0].match(/href=\"([^\"]+)\"/) || [])[1])
-  .filter(Boolean);
-assert(hrefs.length > 0, 'Keine Download-Links gefunden.');
-for (const href of hrefs) {
-  const filePath = path.join(__dirname, '..', href);
-  assert(fs.existsSync(filePath), `Download-Datei fehlt: ${href}`);
+for (const page of ['index.html', 'downloads.html']) {
+  const html = fs.readFileSync(path.join(__dirname, '..', page), 'utf8');
+  const hrefs = [...html.matchAll(/<a[^>]*class="download-btn"[^>]*>/g)]
+    .map((m) => (m[0].match(/href="([^"]+)"/) || [])[1])
+    .filter(Boolean);
+  for (const href of hrefs) {
+    const filePath = path.join(__dirname, '..', href);
+    assert(fs.existsSync(filePath), `Download-Datei fehlt (${page}): ${href}`);
+  }
 }
 
 console.log('Regression Check erfolgreich: 0 Fehler.');

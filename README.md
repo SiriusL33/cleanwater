@@ -15,6 +15,15 @@
 - Sirius Change: Dokumentation um einen klaren WSL-Terminal-Ablauf ergänzt, damit das Projekt reproduzierbar eingerichtet und lokal gestartet werden kann.
 
 
+### 2026-02-24 – Sirius (Premium Migration Sprint)
+- Sirius Change: Lightbox-Datenstruktur in `assets/js/main.js` auf Objekte (`src`, `alt`, `title`) erweitert und Titel-Rendering oberhalb der Lightbox ergänzt.
+- Sirius Change: Neue Unterseite `downloads.html` angelegt und in Hauptnavigation/Fußbereich verlinkt; Startseite zeigt Downloads jetzt nur noch dezent als Teaser am Ende.
+- Sirius Change: Download-Bereich bewusst statisch als Kategorien-Layout gestartet; JS-Filter-Logik auf späteren Ausbau verschoben, um Komplexität und Risiko gering zu halten.
+- Sirius Change: Neue `impressum.html` erstellt und konsistent in Navigation/Footer verankert.
+- Sirius Change: Galerie-Anpassungen als kleines Teilpaket umgesetzt (6 Placeholder-Bilder, horizontale Scroll-Vorschau, Lightbox weiterhin separat).
+- Sirius Change: Responsiveness, Header-/Footer-Verhalten, Bento-Grid-Layout und moderne Content-Hierarchie für höhere Marketingwirkung und bessere UX überarbeitet.
+- Sirius Change: Debug-Run durchgeführt (`npm run check`, `npm run build`) und Regressionen geprüft.
+
 ## Pfadkonventionen (Deployment-abhängig)
 
 <!-- Sirius Change: Verbindliche Pfadregeln ergänzt, um zwischen Root-Deployment und verschachtelten Unterseiten konsistent zu bleiben. -->
