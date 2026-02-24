@@ -99,3 +99,36 @@ curl -I http://localhost:4173/assets/css/styles.css
 curl -I http://localhost:4173/assets/js/main.js
 ```
 
+
+## Security & Hosting Baseline (vorbereitend)
+
+### Empfohlene HTTP-Sicherheitsheader
+Für das Zielhosting (z. B. Nginx/Apache/Reverse Proxy) sollten mindestens diese Header gesetzt werden:
+
+- `Content-Security-Policy` (CSP) mit erlaubten Quellen für Styles/Skripte/Bilder.
+- `X-Content-Type-Options: nosniff`
+- `Referrer-Policy: strict-origin-when-cross-origin`
+- `Permissions-Policy: geolocation=(), microphone=(), camera=()`
+- `Strict-Transport-Security: max-age=31536000; includeSubDomains; preload` (nur bei vollständig aktiviertem HTTPS)
+- `X-Frame-Options: DENY` (oder in CSP `frame-ancestors 'none'`)
+
+### CSP-Startpunkt (an Projekt anpassen)
+```http
+Content-Security-Policy:
+  default-src 'self';
+  script-src 'self';
+  style-src 'self' https://cdnjs.cloudflare.com;
+  img-src 'self' data: https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com;
+  font-src 'self' https://cdnjs.cloudflare.com;
+  connect-src 'self';
+  object-src 'none';
+  base-uri 'self';
+  frame-ancestors 'none';
+  upgrade-insecure-requests;
+```
+
+### Bildstrategie (Performance)
+- Hero-Bild als priorisiertes Asset (`fetchpriority="high"`, kein Lazy-Load).
+- Galerie-Bilder lazy laden (`loading="lazy"`, `decoding="async"`).
+- Für Produktion nach Möglichkeit responsive Varianten (`srcset`, `sizes`) und moderne Formate (`WebP`/`AVIF`) bereitstellen.
+- Bei großen Bilddateien serverseitige Kompression/Caching aktivieren (`Cache-Control`, ETag).
