@@ -9,16 +9,17 @@
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-    <header>
+    <header class="site-header" id="siteHeader">
         <nav class="navbar" aria-label="Hauptnavigation">
-            <div class="navbar-left">
+            <a class="navbar-brand" href="index.html" aria-label="Cleanwater Startseite">
                 <img src="assets/img/Logo.svg" alt="Cleanwater Firmenlogo" class="navbar-logo" loading="eager" decoding="async">
-            </div>
+            </a>
             <ul class="navbar-links">
-                <li><a href="#downloads">Downloads</a></li>
-                <li><a href="#vorteile">Vorteile</a></li>
+                <li><a href="#vorteile">Lösungen</a></li>
                 <li><a href="#gallery">Galerie</a></li>
                 <li><a href="#kontakt">Kontakt</a></li>
+                <li><a href="downloads.html">Downloads</a></li>
+                <li><a href="impressum.html">Impressum</a></li>
             </ul>
         </nav>
     </header>
@@ -26,96 +27,92 @@
     <main>
         <section class="hero" aria-labelledby="hero-title">
             <div class="hero-container">
+                <div class="hero-text">
+                    <p class="eyebrow">Wasserhygiene neu gedacht</p>
+                    <h1 id="hero-title">Technisch präzise. Hygienisch kompromisslos.</h1>
+                    <p>
+                        Cleanwater verbindet anodische Oxidation, robuste Ingenieurskunst und praxisnahe Betriebslogik
+                        zu einer modernen Lösung für sensible dentale Wassersysteme.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#vorteile" class="hero-cta"><i class="fas fa-bolt" aria-hidden="true"></i> Lösungen entdecken</a>
+                        <a href="downloads.html" class="hero-link">Zu den Downloads <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+                </div>
                 <div class="hero-image">
                     <img src="assets/img/Cleanwater Gerät.jpg" alt="Cleanwater+ Gerät für chemiefreie Wasserentkeimung in Dentalanlagen" loading="eager" fetchpriority="high" decoding="async">
                 </div>
-                <div class="hero-text">
-                    <h1 id="hero-title">Cleanwater</h1>
-                    <p>
-                        ist ein Wasserversorgungssystem für den Einsatz bei höchstem Anspruch an die Wasserhygiene.
-                        Es verbindet fortschrittliche Desinfektionstechnik mit langjähriger Erfahrung von
-                        Ingenieuren und Biologen in der Zahnmedizin.
-                    </p>
-                    <a href="#vorteile" class="hero-cta"><i class="fas fa-arrow-down" aria-hidden="true"></i> mehr erfahren</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="downloads" class="downloads" aria-labelledby="downloads-title">
-            <h2 id="downloads-title">Downloads</h2>
-            <p>Weitere Informationen finden Sie in unseren Unterlagen.</p>
-            <div class="downloads-container">
-                <a href="assets/pdf/infobroschuere-cleanwater.pdf" target="_blank" rel="noopener noreferrer" class="download-btn">
-                    <i class="fas fa-file-pdf" aria-hidden="true"></i> Infobroschüre <span class="download-info">(1.8MB)</span>
-                </a>
-                <a href="assets/pdf/ml-010-350-wasserversorgung-mit-cleanwater.pdf" target="_blank" rel="noopener noreferrer" class="download-btn">
-                    <i class="fas fa-file-pdf" aria-hidden="true"></i> Installationsanleitung <span class="download-info">(2.2MB)</span>
-                </a>
-                <a href="assets/pdf/ml-010-360-anschlusspunkt-fuer-cleanwater.pdf" target="_blank" rel="noopener noreferrer" class="download-btn">
-                    <i class="fas fa-file-image" aria-hidden="true"></i> Zertifikat <span class="download-info">(150KB)</span>
-                </a>
             </div>
         </section>
 
         <section id="vorteile" class="benefits" aria-labelledby="benefits-title">
-            <h2 id="benefits-title">Warum Cleanwater?</h2>
+            <div class="section-head">
+                <p class="eyebrow">Systemvorteile</p>
+                <h2 id="benefits-title">Ein durchdachtes Setup für anspruchsvolle Praxen</h2>
+            </div>
             <div class="benefits-grid">
-                <article class="benefit-card">
+                <article class="benefit-card benefit-featured">
                     <i class="fas fa-shield-virus" aria-hidden="true"></i>
-                    <h3>Warum Wasserhygiene?</h3>
-                    <p>Wasser kann im Praxisalltag mit Keimen in Kontakt kommen. Cleanwater schützt diesen sensiblen Bereich Ihrer Hygiene zuverlässig und nachhaltig.</p>
+                    <h3>Hygiene als Standardmodus</h3>
+                    <p>Kontinuierliche Entkeimung hilft, sensible Leitungsabschnitte zuverlässig zu schützen.</p>
                 </article>
                 <article class="benefit-card">
                     <i class="fas fa-clipboard-check" aria-hidden="true"></i>
-                    <h3>Vorschriften und Richtlinien</h3>
-                    <p>Die Lösung erfüllt relevante regulatorische Anforderungen und ist für den hygienisch sensiblen Einsatz in der Praxis konzipiert.</p>
+                    <h3>Regulatorisch belastbar</h3>
+                    <p>Konzipiert für normgerechte Prozesse und nachvollziehbare Praxisabläufe.</p>
                 </article>
                 <article class="benefit-card">
                     <i class="fas fa-gears" aria-hidden="true"></i>
-                    <h3>Automatisiert und autonom</h3>
-                    <p>Das System arbeitet wartungsarm und integriert sich nahtlos in bestehende Betriebsabläufe – robust, langlebig und wirtschaftlich.</p>
+                    <h3>Autonomer Betrieb</h3>
+                    <p>Automatisierte Zyklen reduzieren manuellen Aufwand bei hohem Sicherheitsanspruch.</p>
                 </article>
                 <article class="benefit-card">
                     <i class="fas fa-flask-vial" aria-hidden="true"></i>
-                    <h3>Unser Wirkstoff ist bereits im Wasser</h3>
-                    <p>Cleanwater nutzt anodische Oxidation ohne chemische Zusätze. Die Trinkwasserqualität bleibt erhalten – geruchs-, geschmacks- und farbneutral.</p>
+                    <h3>Chemiefreie Technologie</h3>
+                    <p>Anodische Oxidation ohne externe Zusätze – neutral in Geruch, Geschmack und Farbe.</p>
                 </article>
                 <article class="benefit-card">
                     <i class="fas fa-bacteria" aria-hidden="true"></i>
-                    <h3>Keine Chance für Biofilme</h3>
-                    <p>Bereits vorhandene Biofilme werden gezielt reduziert und eine Neubildung in Endgeräten sowie Leitungen wird wirksam verhindert.</p>
-                </article>
-                <article class="benefit-card">
-                    <i class="fas fa-sliders" aria-hidden="true"></i>
-                    <h3>Kluge Reduktion</h3>
-                    <p>Statt nur einzelne Geräte zu betrachten, schützt Cleanwater das gesamte relevante Wassernetz – bedarfsgerecht und normgerecht.</p>
-                </article>
-                <article class="benefit-card">
-                    <i class="fas fa-arrows-rotate" aria-hidden="true"></i>
-                    <h3>Hält Ihr Wasser in Bewegung</h3>
-                    <p>Automatische Umläufe verhindern Stagnation und unterstützen eine konstante Entkeimung, auch bei variierender Wassernutzung.</p>
+                    <h3>Biofilm-Reduktion</h3>
+                    <p>Bestehende Belastungen werden reduziert und Neubildung wird wirkungsvoll gebremst.</p>
                 </article>
                 <article class="benefit-card">
                     <i class="fas fa-award" aria-hidden="true"></i>
-                    <h3>Ausgezeichnet</h3>
-                    <p>Das chemikalienfreie Cleanwater-System wurde für Umwelttechnologie prämiert und überzeugt durch nachhaltige Betriebssicherheit.</p>
+                    <h3>Nachhaltig prämiert</h3>
+                    <p>Ausgezeichnete Umwelttechnologie mit Fokus auf langlebigen Systembetrieb.</p>
                 </article>
             </div>
         </section>
 
         <section id="gallery" class="gallery" aria-labelledby="gallery-title">
-            <h2 id="gallery-title">Galerie</h2>
-            <div class="gallery-row">
+            <div class="section-head">
+                <p class="eyebrow">Produktansichten</p>
+                <h2 id="gallery-title">Galerie mit Direktvorschau und Lightbox</h2>
+            </div>
+            <!-- Sirius Change: Galerie auf 6 Kacheln + horizontales Scrollen erweitert, damit Vorschau bereits außerhalb der Lightbox komfortabel ist. -->
+            <div class="gallery-scroll" role="region" aria-label="Horizontale Galerie-Vorschau" tabindex="0">
                 <button type="button" class="gallery-item" data-gallery-index="0" aria-label="Bild 1 in der Galerie öffnen">
-                    <img src="assets/img/Platzhalter.png" alt="Detailansicht des Saugschlauchanschlusses" loading="lazy" decoding="async">
+                    <img src="assets/img/Platzhalter.png" alt="Cleanwater Gerät – Frontansicht" loading="lazy" decoding="async">
                     <div class="gallery-overlay"><i class="fas fa-search-plus" aria-hidden="true"></i></div>
                 </button>
                 <button type="button" class="gallery-item" data-gallery-index="1" aria-label="Bild 2 in der Galerie öffnen">
-                    <img src="assets/img/Platzhalter.png" alt="Vorlauf-Anschlussstück des Cleanwater-Systems" loading="lazy" decoding="async">
+                    <img src="assets/img/Platzhalter.png" alt="Cleanwater Gerät – Seitenansicht" loading="lazy" decoding="async">
                     <div class="gallery-overlay"><i class="fas fa-search-plus" aria-hidden="true"></i></div>
                 </button>
                 <button type="button" class="gallery-item" data-gallery-index="2" aria-label="Bild 3 in der Galerie öffnen">
-                    <img src="assets/img/Platzhalter.png" alt="Filter- und Reaktoreingang des Cleanwater-Systems" loading="lazy" decoding="async">
+                    <img src="assets/img/Platzhalter.png" alt="Cleanwater Gerät – Detailpanel" loading="lazy" decoding="async">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus" aria-hidden="true"></i></div>
+                </button>
+                <button type="button" class="gallery-item" data-gallery-index="3" aria-label="Bild 4 in der Galerie öffnen">
+                    <img src="assets/img/Platzhalter.png" alt="Installationsumgebung – Technikbereich" loading="lazy" decoding="async">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus" aria-hidden="true"></i></div>
+                </button>
+                <button type="button" class="gallery-item" data-gallery-index="4" aria-label="Bild 5 in der Galerie öffnen">
+                    <img src="assets/img/Platzhalter.png" alt="Rohrleitungsanschluss – Nahaufnahme" loading="lazy" decoding="async">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus" aria-hidden="true"></i></div>
+                </button>
+                <button type="button" class="gallery-item" data-gallery-index="5" aria-label="Bild 6 in der Galerie öffnen">
+                    <img src="assets/img/Platzhalter.png" alt="Systemansicht im Praxisbetrieb" loading="lazy" decoding="async">
                     <div class="gallery-overlay"><i class="fas fa-search-plus" aria-hidden="true"></i></div>
                 </button>
             </div>
@@ -124,6 +121,7 @@
         <aside class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Galerieansicht" aria-hidden="true">
             <div class="lightbox-content">
                 <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Galerie schließen">&times;</button>
+                <p class="lightbox-title" id="lightboxTitle"></p>
                 <img src="" alt="" class="lightbox-image" id="lightboxImage" loading="eager" decoding="async">
                 <button type="button" class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Vorheriges Bild">&lt;</button>
                 <button type="button" class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Nächstes Bild">&gt;</button>
@@ -131,41 +129,46 @@
         </aside>
 
         <section id="kontakt" class="contact" aria-labelledby="contact-title">
-            <h2 id="contact-title">Kontakt</h2>
+            <div class="section-head">
+                <p class="eyebrow">Kontakt</p>
+                <h2 id="contact-title">Direkter Draht zu Cleanwater</h2>
+            </div>
             <div class="contact-grid">
                 <div>
-                    <p>Weitere Informationen zu Cleanwater finden Sie in unserer Broschüre, die Sie mit dem nachstehenden Link herunterladen können.</p>
-                    <a href="assets/pdf/infobroschuere-cleanwater.pdf" target="_blank" rel="noopener noreferrer" class="download-btn">
-                        <i class="fas fa-file-arrow-down" aria-hidden="true"></i> Broschüre
-                    </a>
+                    <p>Sie möchten ein technisches Gespräch, eine Produktpräsentation oder Unterlagen für Ihr Team? Wir unterstützen Sie gerne.</p>
+                    <a href="mailto:info@cleanwater.de" class="hero-cta"><i class="fas fa-envelope" aria-hidden="true"></i> Anfrage senden</a>
                     <p class="small-note">Biozidprodukte vorsichtig verwenden. Vor Gebrauch stets Etikett und Produktinformation lesen.</p>
                 </div>
                 <address>
                     <strong>Cleanwater</strong><br>
                     Ockstädter Straße 26<br>
                     D-61169 Friedberg<br><br>
-                    Telefon 06031. 68 70 256<br>
-                    Telefax 06031. 68 44 997<br>
+                    Telefon 06031 68 70 256<br>
+                    Telefax 06031 68 44 997<br>
                     <a href="mailto:info@cleanwater.de">info@cleanwater.de</a>
                 </address>
             </div>
         </section>
 
-        <section id="impressum" class="legal" aria-labelledby="impressum-title">
-            <h2 id="impressum-title">Impressum</h2>
-            <p>Cleanwater, Ockstädter Straße 26, D-61169 Friedberg.</p>
+        <!-- Sirius Change: Downloads auf dezente Endsektion reduziert und auf eigene Unterseite ausgelagert. -->
+        <section class="downloads-teaser" aria-labelledby="downloads-teaser-title">
+            <h2 id="downloads-teaser-title">Unterlagen & technische Dokumente</h2>
+            <p>Alle Broschüren, Anleitungen und Nachweise finden Sie gesammelt auf der Download-Seite.</p>
+            <a href="downloads.html" class="hero-link">Zu den Downloads <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
         </section>
-
-        <section id="datenschutz" class="legal" aria-labelledby="datenschutz-title">
-            <h2 id="datenschutz-title">Datenschutz</h2>
-            <p>Datenschutzhinweise erhalten Sie auf Anfrage unter <a href="mailto:info@cleanwater.de">info@cleanwater.de</a>.</p>
-        </section>
-
     </main>
 
-    <footer>
-        <p>&copy; 2026 Cleanwater <span aria-hidden="true">|</span> <a href="#impressum">Impressum</a> <a href="#datenschutz">Datenschutz</a></p>
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p>© 2026 Cleanwater · Technische Wasserhygiene für dentale Systeme</p>
+            <div class="footer-links">
+                <a href="index.html">Start</a>
+                <a href="downloads.html">Downloads</a>
+                <a href="impressum.html">Impressum</a>
+            </div>
+        </div>
     </footer>
+
     <script type="module" src="assets/js/main.js"></script>
 </body>
 </html>

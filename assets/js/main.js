@@ -1,53 +1,43 @@
-// Sirius Change: Skript in ein IIFE gekapselt, damit keine unbeabsichtigten Globals entstehen.
+// Sirius Change: UI-Skript modularisiert und auf Lightbox-Titel + dynamischen Header erweitert.
 (() => {
     'use strict';
 
     const galleryImages = [
-        {
-            src: 'https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/b9272b1e-2318-4501-9ec0-475224e6b43b',
-            alt: 'Detailansicht des Saugschlauchanschlusses'
-        },
-        {
-            src: 'https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/2b74c82c-32e0-47a4-a7ea-4410d0836fef',
-            alt: 'Vorlauf-Anschlussstück des Cleanwater-Systems'
-        },
-        {
-            src: 'https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/e39cfa5b-2c43-4bf5-91b8-db3c38c20fd7',
-            alt: 'Filter- und Reaktoreingang des Cleanwater-Systems'
-        }
+        { src: 'assets/img/Platzhalter.png', alt: 'Cleanwater Gerät – Frontansicht', title: 'Frontansicht · Systemkörper' },
+        { src: 'assets/img/Platzhalter.png', alt: 'Cleanwater Gerät – Seitenansicht', title: 'Seitenansicht · Anschlusszone' },
+        { src: 'assets/img/Platzhalter.png', alt: 'Cleanwater Gerät – Detailpanel', title: 'Detailpanel · Bedienbereich' },
+        { src: 'assets/img/Platzhalter.png', alt: 'Installationsumgebung – Technikbereich', title: 'Installationsumgebung · Technikbereich' },
+        { src: 'assets/img/Platzhalter.png', alt: 'Rohrleitungsanschluss – Nahaufnahme', title: 'Anschlussdetail · Leitungsführung' },
+        { src: 'assets/img/Platzhalter.png', alt: 'Systemansicht im Praxisbetrieb', title: 'Praxisbetrieb · Systemintegration' }
     ];
 
     const lightbox = document.getElementById('lightbox');
     const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxTitle = document.getElementById('lightboxTitle');
     const lightboxClose = document.getElementById('lightboxClose');
     const lightboxPrev = document.getElementById('lightboxPrev');
     const lightboxNext = document.getElementById('lightboxNext');
     const galleryItems = document.querySelectorAll('[data-gallery-index]');
-    const header = document.querySelector('header');
-
-    if (!lightbox || !lightboxImage || !lightboxClose || !lightboxPrev || !lightboxNext || !header || galleryItems.length === 0) {
-        console.error('Cleanwater UI konnte nicht initialisiert werden: benötigte DOM-Elemente fehlen.');
-        return;
-    }
+    const header = document.getElementById('siteHeader');
 
     let currentImageIndex = 0;
     let lastFocusedElement = null;
-    let ticking = false;
 
     const focusableSelector = 'button, [href], [tabindex]:not([tabindex="-1"])';
 
     function renderLightboxImage(index) {
         const imageData = galleryImages[index];
-        if (!imageData) {
-            console.error(`Ungültiger Galerieindex: ${index}`);
+        if (!imageData || !lightboxImage || !lightboxTitle) {
             return;
         }
+
         lightboxImage.src = imageData.src;
         lightboxImage.alt = imageData.alt;
+        lightboxTitle.textContent = imageData.title;
     }
 
     function trapFocus(event) {
-        if (event.key !== 'Tab') return;
+        if (!lightbox || event.key !== 'Tab') return;
 
         const focusableElements = Array.from(lightbox.querySelectorAll(focusableSelector));
         if (focusableElements.length === 0) return;
@@ -65,6 +55,7 @@
     }
 
     function openLightbox(index) {
+        if (!lightbox || !lightboxClose) return;
         currentImageIndex = Number(index);
         renderLightboxImage(currentImageIndex);
         lastFocusedElement = document.activeElement;
@@ -75,6 +66,7 @@
     }
 
     function closeLightbox() {
+        if (!lightbox) return;
         lightbox.classList.remove('active');
         lightbox.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = 'auto';
@@ -94,61 +86,45 @@
     }
 
     function onScroll() {
-        if (ticking) return;
+        if (!header) return;
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        header.classList.toggle('is-scrolled', scrollTop > 60);
+    }
 
-        ticking = true;
-        requestAnimationFrame(() => {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            header.classList.toggle('visible', scrollTop > 300);
-            ticking = false;
+    if (lightbox && lightboxImage && lightboxTitle && lightboxClose && lightboxPrev && lightboxNext && galleryItems.length > 0) {
+        galleryItems.forEach((item) => {
+            item.addEventListener('click', () => openLightbox(item.dataset.galleryIndex));
+        });
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxPrev.addEventListener('click', prevImage);
+        lightboxNext.addEventListener('click', nextImage);
+
+        lightbox.addEventListener('click', (event) => {
+            if (event.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (!lightbox.classList.contains('active')) return;
+            trapFocus(event);
+            if (event.key === 'ArrowLeft') prevImage();
+            if (event.key === 'ArrowRight') nextImage();
+            if (event.key === 'Escape') closeLightbox();
         });
     }
 
-    galleryItems.forEach((item) => {
-        item.addEventListener('click', () => {
-            try {
-                openLightbox(item.dataset.galleryIndex);
-            } catch (error) {
-                console.error('Galerie konnte nicht geöffnet werden.', error);
-            }
-        });
-    });
-
-    lightboxClose.addEventListener('click', closeLightbox);
-    lightboxPrev.addEventListener('click', prevImage);
-    lightboxNext.addEventListener('click', nextImage);
-
-    lightbox.addEventListener('click', (event) => {
-        if (event.target === lightbox) {
-            closeLightbox();
-        }
-    });
-
-    document.addEventListener('keydown', (event) => {
-        if (!lightbox.classList.contains('active')) {
-            return;
-        }
-
-        trapFocus(event);
-        if (event.key === 'ArrowLeft') prevImage();
-        if (event.key === 'ArrowRight') nextImage();
-        if (event.key === 'Escape') closeLightbox();
-    });
-
     window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
 
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener('click', (event) => {
             const targetSelector = anchor.getAttribute('href');
-            if (!targetSelector || targetSelector === '#') {
-                return;
-            }
+            if (!targetSelector || targetSelector === '#') return;
 
             const target = document.querySelector(targetSelector);
-            if (!target) {
-                console.warn(`Scroll-Ziel nicht gefunden: ${targetSelector}`);
-                return;
-            }
+            if (!target) return;
 
             event.preventDefault();
             target.scrollIntoView({ behavior: 'smooth', block: 'start' });
