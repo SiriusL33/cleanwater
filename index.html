@@ -12,7 +12,13 @@
     <header>
         <nav class="navbar" aria-label="Hauptnavigation">
             <div class="navbar-left">
+<<<<<<< codex/fix-layout-issues-and-enhance-accessibility-t1n2i9
                 <img src="assets/img/Logo.svg" alt="Cleanwater Firmenlogo" class="navbar-logo" loading="eager" decoding="async">
+=======
+                <!-- Sirius Change: Bildpfad auf relatives assets/img vereinheitlicht, damit Root- und Subpfad-Deployments konsistent funktionieren. -->
+                <img src="assets/img/Logo.svg" alt="Cleanwater Firmenlogo" class="navbar-logo" loading="eager" decoding="async">
+                <span class="navbar-brand"></span>
+>>>>>>> main
             </div>
             <ul class="navbar-links">
                 <li><a href="#downloads">Downloads</a></li>
@@ -27,6 +33,10 @@
         <section class="hero" aria-labelledby="hero-title">
             <div class="hero-container">
                 <div class="hero-image">
+<<<<<<< codex/fix-layout-issues-and-enhance-accessibility-t1n2i9
+=======
+                    <!-- Sirius Change: Hero-Bildpfad auf relatives assets/img harmonisiert (Deployment-unabhängig). -->
+>>>>>>> main
                     <img src="assets/img/Cleanwater Gerät.jpg" alt="Cleanwater+ Gerät für chemiefreie Wasserentkeimung in Dentalanlagen" loading="eager" fetchpriority="high" decoding="async">
                 </div>
                 <div class="hero-text">
@@ -46,6 +56,7 @@
             <p>Weitere Informationen finden Sie in unseren Unterlagen.</p>
             <div class="downloads-container">
                 <a href="cleanwater-infobroschuere.pdf" target="_blank" rel="noopener noreferrer" class="download-btn">
+<<<<<<< codex/fix-layout-issues-and-enhance-accessibility-t1n2i9
                     <i class="fas fa-file-arrow-down" aria-hidden="true"></i> Broschüre
                 </a>
                 <a href="installationsanleitung.pdf" target="_blank" rel="noopener noreferrer" class="download-btn">
@@ -53,6 +64,15 @@
                 </a>
                 <a href="zertifikat.png" target="_blank" rel="noopener noreferrer" class="download-btn">
                     <i class="fas fa-file-arrow-down" aria-hidden="true"></i> Voraussetzungen
+=======
+                    <i class="fas fa-file-pdf"></i> Infobroschüre <span class="download-info">(1.8MB)</span>
+                </a>
+                <a href="installationsanleitung.pdf" target="_blank" rel="noopener noreferrer" class="download-btn">
+                    <i class="fas fa-file-pdf"></i> Installationsanleitung <span class="download-info">(2.2MB)</span>
+                </a>
+                <a href="zertifikat.png" target="_blank" rel="noopener noreferrer" class="download-btn">
+                    <i class="fas fa-file-image"></i> Zertifikat <span class="download-info">(150KB)</span>
+>>>>>>> main
                 </a>
             </div>
         </section>
@@ -108,6 +128,7 @@
             <div class="gallery-row">
                 <button type="button" class="gallery-item" data-gallery-index="0" aria-label="Bild 1 in der Galerie öffnen">
                     <img src="assets/img/Platzhalter.png" alt="Detailansicht des Saugschlauchanschlusses" loading="lazy" decoding="async">
+<<<<<<< codex/fix-layout-issues-and-enhance-accessibility-t1n2i9
                     <div class="gallery-overlay"><i class="fas fa-search-plus" aria-hidden="true"></i></div>
                 </button>
                 <button type="button" class="gallery-item" data-gallery-index="1" aria-label="Bild 2 in der Galerie öffnen">
@@ -117,10 +138,31 @@
                 <button type="button" class="gallery-item" data-gallery-index="2" aria-label="Bild 3 in der Galerie öffnen">
                     <img src="assets/img/Platzhalter.png" alt="Filter- und Reaktoreingang des Cleanwater-Systems" loading="lazy" decoding="async">
                     <div class="gallery-overlay"><i class="fas fa-search-plus" aria-hidden="true"></i></div>
+=======
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </button>
+                <button type="button" class="gallery-item" data-gallery-index="1" aria-label="Bild 2 in der Galerie öffnen">
+                    <img src="assets/img/Platzhalter.png" alt="Vorlauf-Anschlussstück des Cleanwater-Systems" loading="lazy" decoding="async">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </button>
+                <button type="button" class="gallery-item" data-gallery-index="2" aria-label="Bild 3 in der Galerie öffnen">
+                    <img src="assets/img/Platzhalter.png" alt="Filter- und Reaktoreingang des Cleanwater-Systems" loading="lazy" decoding="async">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+>>>>>>> main
                 </button>
             </div>
         </section>
 
+<<<<<<< codex/fix-layout-issues-and-enhance-accessibility-t1n2i9
+=======
+        <!-- Sirius Change: Lightbox semantisch als Dialog ausgezeichnet, Struktur bleibt funktional unverändert. -->
+>>>>>>> main
         <aside class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Galerieansicht" aria-hidden="true">
             <div class="lightbox-content">
                 <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Galerie schließen">&times;</button>
@@ -155,7 +197,11 @@
     <footer>
         <p>&copy; 2026 Cleanwater <span aria-hidden="true">|</span> <a href="#impressum">Impressum</a> <a href="#datenschutz">Datenschutz</a></p>
     </footer>
+<<<<<<< codex/fix-layout-issues-and-enhance-accessibility-t1n2i9
 
+=======
+    <!-- Sirius Change: Externe JavaScript-Datei für bessere Wartbarkeit und Debugging. -->
+>>>>>>> main
     <script type="module" src="assets/js/main.js"></script>
 </body>
 </html>
